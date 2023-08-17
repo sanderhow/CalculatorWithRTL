@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FirstLayer from './Components/FirstLayer/FirstLayer';
+import SecondLayer from './Components/SecondLayer/SecondLayer';
+import * as P from './parts';
 
 function App() {
+  const [num1, setNum1] = useState<string>('');
+  const [num2, setNum2] = useState<string>('');
+  const [operator, setOperator] = useState<string>('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <P.Wrapper>
+      <FirstLayer 
+        num1={num1}
+        num2={num2}
+      />
+      <SecondLayer 
+        num1={num1}
+        num2={num2}
+        setNum1={setNum1}
+        setNum2={setNum2}
+        operator={operator}
+        setOperator={setOperator}
+      />
+    </P.Wrapper>
   );
 }
 
