@@ -15,7 +15,6 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, setNum1, setNum2}) => 
     const [operator, setOperator] = useState<string>('');
 
     const handleKeyBoardEvent = (event: KeyboardEvent) => {
-        console.log(event);
         handleCalculations(event.key);
     }
 
