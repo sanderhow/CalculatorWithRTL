@@ -1,5 +1,4 @@
 export const calculateCurrentNumber = (num1: string, num2: string, operator: string) => {
-    console.log(operator);
     switch (operator) {
         case '+':
             return roundNumber(Number(num1) + Number(num2));
@@ -10,6 +9,7 @@ export const calculateCurrentNumber = (num1: string, num2: string, operator: str
         case 'x':
             return roundNumber(Number(num1) * Number(num2));
         case 'mod':
+            if (num2 === '0') return 'NaN';
             return roundNumber(Number(num1) % Number(num2));
         default:
             return 'NaN';    
@@ -22,7 +22,6 @@ const numbersAfterDecimal = (num: number) => {
     }
   
     const arr = num.toString().split('.');
-    console.log(num);
     return arr[1].length;
   }
 
@@ -44,8 +43,6 @@ const roundNumber = (sum: number) => {
 }
 
 export const modifyNumber = (num: string, operator: string) => {
-    console.log("pedal");
-    console.log(operator);
     switch (operator) {
         case '%':
             return (Number(num) / 100).toString();
@@ -59,13 +56,12 @@ export const modifyNumber = (num: string, operator: string) => {
             }
             return num + '.';
         default:
-            return (Number(num) * -1).toString();    
+            return num;    
     }
 }
 
 export const soundEffectEvent = (event: KeyboardEvent) => {
     const keyPress = event.key;
-    console.log(keyPress);
     
     switch (keyPress) {
             case '0':

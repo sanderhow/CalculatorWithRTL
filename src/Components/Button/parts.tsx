@@ -9,18 +9,19 @@ export const Wrapper = styled.button<{ isEqual?: boolean }>`
   height: 47px;
   text-align: center;
   text-decoration: none;
-  left: 30%;
+  left: 33%;
   position: absolute;
+  bottom: -25px;
 
  ${({ isEqual }) => isEqual && css`
-  animation: zoom-in-zoom-out 2s ease-out;
+  animation: zoom-in-zoom-out 0.2s ease-out;
   
   @keyframes zoom-in-zoom-out {
   0% {
     transform: scale(1, 1);
   }
   50% {
-    transform: scale(1.5, 1.5);
+    transform: scale(1.1, 1.1);
   }
   100% {
     transform: scale(1, 1);
@@ -29,4 +30,10 @@ export const Wrapper = styled.button<{ isEqual?: boolean }>`
 
 export const ButtonText = styled.div`
   font-size: 1.2rem;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

@@ -10,7 +10,7 @@ const FirstLayer: React.FC<IFirstLayer> = ({num1, num2}) => {
 
 return (
     <P.Wrapper>
-        <P.ResultContainer>
+        <P.ResultContainer data-testid="resultCalculation">
             {num2 || num1 || '0'}
         </P.ResultContainer>
     </P.Wrapper>

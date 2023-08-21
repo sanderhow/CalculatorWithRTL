@@ -7,19 +7,17 @@ import { calculateCurrentNumber, modifyNumber, soundEffectEvent } from "./utils"
 interface ISecondLayer {
     num1: string;
     num2: string;
-    operator: string;
     setNum1: React.Dispatch<React.SetStateAction<string>>;
     setNum2: React.Dispatch<React.SetStateAction<string>>;
-    setOperator: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, setNum2, setOperator}) => {
+const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, setNum1, setNum2}) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
-    
+    const [operator, setOperator] = useState<string>('');
+
     useEffect(() => {
         document.addEventListener('keydown', soundEffectEvent);
     }, []);
-    
     
     const handleClick = (event: React.SyntheticEvent<HTMLButtonElement>) => {
         setIsClicked(!isClicked);
@@ -36,20 +34,20 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, set
             case '7':
             case '8':
             case '9':
-                if (num1 === '' || !(num1 === '0')) {
-                    if (num1 && operator) {
+                if (num1 === '' || !(a === '0') || num1) {
+                    if (num1 && operator && num2.length < 9) {
                         setNum2(prev => {
                             return prev + a;
                         })
                     }
-                    else {
+                    else if (num1.length < 9){
                         setNum1(prev => {
                             return prev + a;
                         });
                     } 
                 } 
-                let audio = new Audio("./1-9.mp3");
-                audio.play();
+                // let audio = new Audio("./1-9.mp3");
+                // audio.play();
             break;
 
             case '%':
@@ -57,11 +55,11 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, set
             case '.':
                 if (num2) {
                     setNum2(modifyNumber(num2, a));
-                } else {
+                } else if(num1) {
                     setNum1(modifyNumber(num1, a));
                 }
-                let audio2 = new Audio("./specialSigns.mp3");
-                audio2.play();
+                // let audio2 = new Audio("./specialSigns.mp3");
+                // audio2.play();
             break;
 
             case '+':
@@ -75,8 +73,8 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, set
                 }
                 setOperator(a);
 
-                let audio3 = new Audio("./audio6.mp3");
-                audio3.play();
+                // let audio3 = new Audio("./audio6.mp3");
+                // audio3.play();
             break;
 
 
@@ -85,9 +83,9 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, set
                     setNum1(calculateCurrentNumber(num1, num2, operator));
                     setNum2('');
                 }
-                let audio4 = new Audio("./=.mp3");
-                audio4.play();
-                break;
+                // let audio4 = new Audio("./=.mp3");
+                // audio4.play();
+            break;
 
             case 'C':
                 setNum1('');
@@ -102,7 +100,6 @@ const SecondLayer: React.FC<ISecondLayer> = ({num1, num2, operator, setNum1, set
             }
 
 }
-console.log(isClicked);
 
 return (
     <P.Wrapper>
