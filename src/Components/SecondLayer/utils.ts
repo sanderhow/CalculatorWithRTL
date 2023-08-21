@@ -59,27 +59,3 @@ export const modifyNumber = (num: string, operator: string) => {
             return num;    
     }
 }
-
-export const soundEffectEvent = (event: KeyboardEvent) => {
-    const keyPress = event.key;
-    
-    switch (keyPress) {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                let audio = new Audio("./1-9.mp3");
-                audio.play();
-                break;
-            
-        default:
-            return 'NaN';  
-
-        }
-}
