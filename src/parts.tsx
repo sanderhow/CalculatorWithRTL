@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(#387DFF, #3393E8, #45CAFF, #33D6E8 );
-`
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(#387dff, #3393e8, #45caff, #33d6e8);
+`;
